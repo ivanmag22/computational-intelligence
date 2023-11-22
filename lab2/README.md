@@ -52,3 +52,8 @@ With *(1_000 // λ) epochs* (with λ=20 -> 50 epochs) I obtained:
     + playing with optimal
         * ES-accuracy = 48.89 %
         * accuracy obtained by 30 matches with pure_random = 98.89 %
+
+## EDIT made on November 22nd
+In the last code cell, where I check the accuracy of the final individual obtained by applying the evolutionary strategy against the optimal player, I did not check well if the player that wins is the evolutionary one or the optimal one. I made this mistake because I want that the evolutionary individual plays one time as the first that takes objects and one time as the second that takes objects, but I did the check on the list *players* that contains only the players that play the matches and not the order in which they play (contained in *strategy*). 
+So I substitute the if-clause *if **players[player]** is es_player* in *if **strategy[player]** is es_player*.
+In this manner I obtained a reasonable accuracy of evolutionary individual's victories against the optimal one.
