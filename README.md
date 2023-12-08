@@ -18,3 +18,8 @@ Report by Ivan Magistro Contenta, s314356
 ## Lab 09
 - completed
 - submitted in time
+- peer review:
+    - Filippo Greco, s309529,
+    GitHub username: figimodi
+    - Leonardo Pieraccioli, s318935,
+    GitHub username: leonardo-pieraccioli
