@@ -32,3 +32,7 @@ Report by Ivan Magistro Contenta, s314356
     GitHub username: [arturoadelfio](https://github.com/arturoadelfio)
     - Abdelouahab Moubane, s305716,
     GitHub username: [AbdelouahabMoubane](https://github.com/AbdelouahabMoubane)
+
+## Quixo Project
+- completed
+- submitted
