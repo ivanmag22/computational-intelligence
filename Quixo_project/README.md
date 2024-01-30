@@ -16,14 +16,15 @@ To make a horizontal, vertical or diagonal line from 5 cubes bearing your symbol
 
 ### Our Work
 Since we worked in four, for this project we decided to cover the main approaches that we studied during the course. These approaches are:
-- MinMax
-- AlphaBetaPruning
-- MonteCarlo RL
-- Q-Learning
-- ES 1+λ: one implementation against Random Agent and one against AlphaBetaPruning Agent
+- **MinMax**
+- **AlphaBetaPruning**
+- **MonteCarlo RL**
+- **Q-Learning**
+- **ES 1+λ**: one implementation against *Random Agent* and one against *AlphaBetaPruning Agent*
 
 All these algorithms are written in Jupyter Notebooks (.ipynb). This allow us to better organize the work and to make it more readable. 
-The project required us to develop different Agents able to play Quixo. The provided template presents a Game Class with all the methods useful to do a match game against another Agent. The default opponent is a Random Player which strategy is to perform a random move starting from a random position in the table. 
+
+The project required us to develop different Agents able to play Quixo. The provided template (we referred to [this commit](https://github.com/squillero/computational-intelligence/tree/0edba49611125b58f5460ac362df2f5dc2e02e44)) presents a Game Class with all the methods useful to do a match game against another Agent. The default opponent is a Random Player which strategy is to perform a random move starting from a random position in the table.
 
 We subclassed the ___Game Class___ in order to write some methods that are pretty useful to better visualize what is going on and to provide our agents functional tools. For doing it, we implement our  ___MyGame Class___. There some functions in this Class that are used in all the files, while others are specific for some agents. 
 Here a short overview of some methods of ___MyGame Class___ (Other functions are commented in the description of the specific approaches):
