@@ -6,6 +6,16 @@
 > - [Francesca](https://github.com/Zafonte)
 > - [Rita](https://github.com/class1c-j)
 
+## Table of contents
+- [Brief introduction](#brief-introduction)
+- [Approaches](#approaches)
+   - [MinMax](#minmax)
+   - [Alpha-Beta Pruning](#alpha-beta-pruning)
+   - [Monte Carlo RL](#monte-carlo-rl)
+   - [Q-Learning](#q-learning)
+   - [Evolutionary Strategy (1+λ)](#es-1λ)
+- [Conclusions](#conclusions)
+
 ## Brief introduction
 
 ### The Game
@@ -16,14 +26,15 @@ To make a horizontal, vertical or diagonal line from 5 cubes bearing your symbol
 
 ### Our Work
 Since we worked in four, for this project we decided to cover the main approaches that we studied during the course. These approaches are:
-- MinMax
-- AlphaBetaPruning
-- MonteCarlo RL
-- Q-Learning
-- ES 1+λ: one implementation against Random Agent and one against AlphaBetaPruning Agent
+- **MinMax**
+- **Alpha-Beta Pruning**
+- **Monte Carlo RL**
+- **Q-Learning**
+- **ES 1+λ**: one implementation against *Random Agent* and one against *AlphaBetaPruning Agent*
 
 All these algorithms are written in Jupyter Notebooks (.ipynb). This allow us to better organize the work and to make it more readable. 
-The project required us to develop different Agents able to play Quixo. The provided template presents a Game Class with all the methods useful to do a match game against another Agent. The default opponent is a Random Player which strategy is to perform a random move starting from a random position in the table. 
+
+The project required us to develop different Agents able to play Quixo. The provided template (we referred to [this commit](https://github.com/squillero/computational-intelligence/tree/0edba49611125b58f5460ac362df2f5dc2e02e44)) presents a Game Class with all the methods useful to do a match game against another Agent. The default opponent is a Random Player which strategy is to perform a random move starting from a random position in the table.
 
 We subclassed the ___Game Class___ in order to write some methods that are pretty useful to better visualize what is going on and to provide our agents functional tools. For doing it, we implement our  ___MyGame Class___. There some functions in this Class that are used in all the files, while others are specific for some agents. 
 Here a short overview of some methods of ___MyGame Class___ (Other functions are commented in the description of the specific approaches):
@@ -53,6 +64,8 @@ We provide a folder in this repository named *pretrained_agents*:
 - **mc_agents** : it includes two trained dictionaries. One computed by our player starting as first and one as second. These files are in .rar format, **please unzip them**.
 
 All the pretrained files must be located in the same folder in which there is the correspondent algorithm. In the notebook files **please pay attention to the path constant**.
+
+## Approaches
 
 ### MinMax 
 The code in the file Quixo_Minmax.ipynb proposed an Agent able to take a move after exploring the tree game according to the minmax function. This is a recursive function which goal is to maximize the minumum of the reward. What does it means? In the MinMax algorithm the agent starts from the leaf ot the tree and goes up  maximizing and minimizing level by level. Since the agent is expecting that the opponent plays in an optimal way, it searches the best move to apply by exploring the game tree. The applied move is always the _best_move_ for our Agent in the worst possible scenario. Since the _branching factor_ is huge and the tree is very deep (with respect to more simple game such as _Tic_Tac_Toe_) we have to set a kind of _hard cut off_ for limiting the depth of the search at a certain level. In fact, we have like $1.7 * 10^{12}$ configurations. So the complexity grows and it is very time consuming exploring the whole tree. 
@@ -104,7 +117,7 @@ As we said, we set a limit in depth. The following results represent the percent
    | 3                                | 186.110 s              |
    
 
-### AlphaBetaPrunuing
+### Alpha-Beta Pruning
 The code in the file Alpha_beta_pruning_quixo.ipynb is a variant of the MinMax algorithm, but faster. It does not change the nature of the algorithm itself. The base idea is that one of __Pat Winston__ : "If you have an idea that is surely bad, don't take the time to see how trurly awful it is".
 Thus, instead of exploring the whole tree, this algorithm cuts off some branches if some conditions are satisfied. In particular, it checks the values of two variables, alpha and beta: if one of them is higher or equal to the other, the branch is cut. In this manner, it is possible to proceed quickly in the exploration. As in the minimax approach, we recur to _minimax()_ function that presents the updating of some variables at the end of each maximization/minimization stage. On one hand during the maximization stage: best_score=max(score, best_score) and  alpha = max(alpha, score). On the other hand, in minimization stage: best_score = min(score, best_score), beta=min(beta, score)). Then, there is a condition that checks if that branch has to be cut off or less (if beta <= alpha: break). 
 Also in this case it is possible to establish a depth where end our exploration.
@@ -148,7 +161,7 @@ Also in this case it is possible to establish a depth where end our exploration.
    | 5                                | 469.711 s              |
    
 
-### MonteCarlo RL
+### Monte Carlo RL
 In the file Quixo_MonteCarlo.ipynb it is possible to find a RL Agent that learns with a MonteCarlo approach.
 The Monte Carlo method for reinforcement learning is a learning algorithm that learns directly from the environment without any prior knowledge. It is used for estimating the value of states.
 We implemented a random game and then we keep track of all the states. Then we evaluate them using the following expression: 
@@ -319,7 +332,7 @@ A few tests were conducted training the agent against the Alpha-Beta player and 
      ![Screenshot](./results_images/win_2_5_rules_14_lambda_10_against_alpha.png)
 
 
-### Conclusions
+## Conclusions
 For this project we implemented *4 main approaches* and a few variants (MinMax, Alpha-Beta pruning, Monte-Carlo Reinforcement Learning, Q-Learning, Evolutionary Strategies with two differents training) aiming to cover the different paradigms we explored during the lectures and understand how they compare in the setting of learning to play a game (in this case Quixo).
 
 Analysing the results obtained with the different methods has allowed us better undestand the strenghts and weaknesses of each of the approaches, seamlessly complimenting the material we studied during the semester.
